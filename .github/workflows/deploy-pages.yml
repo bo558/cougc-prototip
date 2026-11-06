@@ -1,0 +1,66 @@
+# COUGC prototipini GitHub Pages'e yayınlar (statik export).
+# Güvenlik için yalnızca ELLE tetiklenir: GitHub → Actions → "GitHub Pages'e yayınla" → Run workflow.
+# Her push'ta otomatik yayın istenirse aşağıdaki "push" bloğunun yorumunu kaldırın.
+name: GitHub Pages'e yayınla
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+env:
+  NEXT_TELEMETRY_DISABLED: '1'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Bağımlılıkları kur
+        run: npm ci
+
+      # next-env.d.ts ve rota tipleri depoda tutulmaz; tip denetiminden önce üretilmelidir.
+      - name: Next.js tiplerini üret
+        run: npx next typegen
+
+      - name: Kontroller
+        run: |
+          npm run typecheck
+          npm run lint
+
+      - name: Statik derleme
+        # Proje sitesi /<repo-adı>/ altında yayınlanır; <kullanıcı>.github.io deposu ise kök dizinde.
+        run: |
+          REPO="${{ github.event.repository.name }}"
+          if [[ "$REPO" == *.github.io ]]; then export NEXT_PUBLIC_BASE_PATH=""; else export NEXT_PUBLIC_BASE_PATH="/$REPO"; fi
+          echo "basePath: '$NEXT_PUBLIC_BASE_PATH'"
+          npm run build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

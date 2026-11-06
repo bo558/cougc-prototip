@@ -1,0 +1,78 @@
+# Bağımlılıklar
+node_modules/
+
+# Derleme çıktıları (GitHub Actions yeniden üretir)
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Ortam değişkenleri ve gizli bilgiler (projede kullanılmıyor; yanlışlıkla eklenmesin)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Barındırma araçlarının yerel klasörleri
+.vercel/
+.netlify/
+
+# Loglar ve hata raporları
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# İşletim sistemi ve editör dosyaları
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Test / kapsam
+coverage/
+
+# next dev tarafından otomatik üretilen yapay zekâ ajan notu
+AGENTS.md
+CLAUDE.md
+.claude/
+
+# Yerel yedekler (logo ve lisans dosyaları bu kuralların dışındadır)
+*.bak
+*.old
+*.orig
+*~
+yedek/
+yedekler/
+backup/
+backups/
+*-yedek*/
+*-backup*/
+
+# Arşivler
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.tgz
+
+# Ekran görüntüleri, kayıtlar ve yerel önizlemeler
+Screenshot*
+screenshot-*
+Ekran görüntüsü*
+Ekran Resmi*
+ekran-goruntusu*
+*.har
+onizleme/
+onizleme-*/
+
+# Yerel iş belgeleri
+*.pdf

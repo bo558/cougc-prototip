@@ -1,0 +1,71 @@
+/* ==========================================================================
+   COUGC tasarım tokenları
+   Kaynak: cogros.com görsel dili (yeşil/mürekkep/kâğıt, Plus Jakarta Sans + Inter)
+   + COUGC marka turuncusu (ana aksan).
+   Renk değişikliği yalnızca bu dosyadan yapılır; Cogros sitesinin renklerini etkilemez.
+   ========================================================================== */
+:root {
+  /* COUGC marka turuncusu: #F85608 (logodaki yıldızla birebir aynı).
+     Kontrast (WCAG 2.1): beyaz üzerinde 3,32:1, kâğıt üzerinde 3,04:1 → ikon, kenarlık, büyük başlık için uygun;
+     küçük metin için uygun değil (AA 4,5:1). Küçük metinde --orange-700, turuncu zeminde --on-orange kullanılır. */
+  --orange: #F85608;
+  --orange-rgb: 248, 86, 8;
+  --on-orange: #0c1411;       /* turuncu zemin üzerindeki metin: 5,63:1. Beyaz yazı 3,32:1 ile AA'yı geçmez */
+  --orange-600: #E94E05;      /* buton üzerine gelme durumu (mürekkep metinle 4,94:1) */
+  --orange-700: #C43E00;      /* küçük turuncu metin ve bağlantılar (beyazda 5,20:1 · kâğıtta 4,77:1 · 50 zeminde 4,71:1) */
+  --orange-800: #7A2C05;      /* turuncu bilgi kutusu metni (50 zeminde 8,69:1) */
+  --orange-100: #FFE0D1;
+  --orange-50: #FFF1EA;
+  --orange-on-dark: #FFB48F;  /* koyu zeminde turuncu metin (mürekkepte 10,84:1) */
+
+  /* Cogros yeşili — yalnızca olumlu durumlar (onaylandı, ödendi, tamamlandı) */
+  --green: #0b6b4b;
+  --green-700: #095c40;
+  --green-50: #e6f5ed;
+
+  /* Nötrler — Cogros mürekkep ve kâğıt tonları */
+  --ink: #0c1411;
+  --ink-2: #16201c;
+  --ink-3: #222d28;
+  --text: #101815;
+  --muted: #5b6762;
+  --muted-2: #8a958f;
+  --paper: #f6f5f0;
+  --paper-2: #efeee7;
+  --surface: #ffffff;
+  --line: #e4e8e3;
+  --line-2: #eef0ec;
+
+  /* Durum tonları (az ve ölçülü) */
+  --amber: #9a5b06;
+  --amber-50: #fdf3e0;
+  --blue: #2b55b4;
+  --blue-50: #ebf0fc;
+  --red: #b93a2e;
+  --red-50: #fcebe8;
+  --violet: #6440b0;
+  --violet-50: #f1ecfb;
+
+  /* Tipografi */
+  --f-display: var(--font-jakarta), "Plus Jakarta Sans", var(--font-inter), Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-text: var(--font-inter), Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Ölçüler */
+  --r-xs: 8px;
+  --r-sm: 12px;
+  --r-md: 16px;
+  --r-lg: 22px;
+  --r-xl: 30px;
+  --pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(12, 20, 17, .05);
+  --shadow-sm: 0 1px 2px rgba(12, 20, 17, .04), 0 4px 14px -6px rgba(12, 20, 17, .10);
+  --shadow-md: 0 24px 48px -24px rgba(12, 20, 17, .28);
+  --shadow-lg: 0 40px 80px -30px rgba(12, 20, 17, .35);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+
+  --sidebar-w: 248px;
+  --topbar-h: 64px;
+  --demobar-h: 34px;
+}
